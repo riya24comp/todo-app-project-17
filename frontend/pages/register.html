@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account | TaskFlow</title>
+    <meta name="description" content="Create your TaskFlow account and start organizing your work.">
+    <meta name="theme-color" content="#0D9488">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body class="auth-page">
+
+    <main class="auth-layout">
+
+        <aside class="auth-brand">
+            <div class="auth-brand-top">
+                <a class="brand brand-light" href="../index.html" aria-label="TaskFlow home">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check"></use></svg>
+                    </span>
+                    <span>TaskFlow</span>
+                </a>
+                <a class="auth-back" href="../index.html">
+                    <span>Back to home</span>
+                </a>
+            </div>
+
+            <div class="auth-brand-copy">
+                <h1>Start your clearest week yet.</h1>
+                <p>Create your workspace and organize your tasks in one place.</p>
+            </div>
+        </aside>
+
+        <section class="auth-panel">
+            <div class="auth-panel-inner">
+                <a class="brand auth-mobile-brand" href="../index.html">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check"></use></svg>
+                    </span>
+                    <span>TaskFlow</span>
+                </a>
+
+                <header class="auth-head">
+                    <h2>Create your account</h2>
+                    <p>Use your details to set up a new account.</p>
+                </header>
+
+                <form id="registerForm" class="auth-form" novalidate>
+                    <div class="field">
+                        <label for="registerName">Full name</label>
+                        <div class="input-wrap">
+                            <input type="text" id="registerName" name="name" placeholder="Your full name"
+                                autocomplete="name" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="registerEmail">Email address</label>
+                        <div class="input-wrap">
+                            <input type="email" id="registerEmail" name="email" placeholder="you@example.com"
+                                autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="registerPassword">Password</label>
+                        <div class="input-wrap">
+                            <input type="password" id="registerPassword" name="password" placeholder="Create a password"
+                                autocomplete="new-password" minlength="6" required>
+                            <button type="button" class="password-toggle" data-password-toggle
+                                aria-label="Show password">
+                                <svg class="icon icon-eye" aria-hidden="true">
+                                    <use href="../assets/icons.svg#i-eye"></use>
+                                </svg>
+                                <svg class="icon icon-eye-off" aria-hidden="true">
+                                    <use href="../assets/icons.svg#i-eye-off"></use>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="strength" id="passwordStrength">
+                            <div class="strength-bars" aria-hidden="true">
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                            <span class="strength-label" id="strengthLabel">
+                                Use 8+ characters with a mix of letters, numbers and symbols.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmPassword">Confirm password</label>
+                        <div class="input-wrap">
+                            <input type="password" id="confirmPassword" name="confirmPassword"
+                                placeholder="Repeat your password" autocomplete="new-password" minlength="6" required>
+                            <button type="button" class="password-toggle" data-password-toggle
+                                aria-label="Show password">
+                                <svg class="icon icon-eye" aria-hidden="true">
+                                    <use href="../assets/icons.svg#i-eye"></use>
+                                </svg>
+                                <svg class="icon icon-eye-off" aria-hidden="true">
+                                    <use href="../assets/icons.svg#i-eye-off"></use>
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="match-hint" id="passwordMatch">Re-enter your password.</span>
+                    </div>
+
+                    <div id="registerMessage" class="form-message" role="alert" aria-live="polite"></div>
+
+                    <button class="btn btn-primary btn-block" type="submit">
+                        <span class="btn-label">Create account</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                </form>
+
+                <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+            </div>
+        </section>
+    </main>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/demo.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '../backend/.env') });
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('./models/User');
@@ -6,6 +6,10 @@ const Task = require('./models/Task');
 
 const seedDatabase = async () => {
   try {
+    if (!process.env.MONGO_URI) {
+      throw new Error('MONGO_URI is required. Configure backend/.env before seeding.');
+    }
+
     console.log("Connecting to MongoDB...");
     await mongoose.connect(process.env.MONGO_URI);
     console.log("✅ MongoDB Connected Successfully!");
