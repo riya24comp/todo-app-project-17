@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in | TaskFlow</title>
+    <meta name="description" content="Log in to your TaskFlow workspace.">
+    <meta name="theme-color" content="#0D9488">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+
+<body class="auth-page">
+
+    <main class="auth-layout">
+
+        <aside class="auth-brand">
+            <div class="auth-brand-top">
+                <a class="brand brand-light" href="../index.html" aria-label="TaskFlow home">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check"></use></svg>
+                    </span>
+                    <span>TaskFlow</span>
+                </a>
+                <a class="auth-back" href="../index.html">
+                    <span>Back to home</span>
+                </a>
+            </div>
+
+            <div class="auth-brand-copy">
+                <h1>Pick up right where you left off.</h1>
+                <p>Sign in to pick up your tasks and keep moving.</p>
+            </div>
+        </aside>
+
+        <section class="auth-panel">
+            <div class="auth-panel-inner">
+                <a class="brand auth-mobile-brand" href="../index.html">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check"></use></svg>
+                    </span>
+                    <span>TaskFlow</span>
+                </a>
+
+                <header class="auth-head">
+                    <h2>Log in to TaskFlow</h2>
+                    <p>Enter your email and password to continue.</p>
+                </header>
+
+                <form id="loginForm" class="auth-form" novalidate>
+                    <div class="field">
+                        <label for="loginEmail">Email address</label>
+                        <div class="input-wrap">
+                            <input type="email" id="loginEmail" name="email" placeholder="you@example.com"
+                                autocomplete="email" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="field-row">
+                            <label for="loginPassword">Password</label>
+                        </div>
+                        <div class="input-wrap">
+                            <input type="password" id="loginPassword" name="password" placeholder="Enter your password"
+                                autocomplete="current-password" required>
+                            <button type="button" class="password-toggle" data-password-toggle
+                                aria-label="Show password">
+                                <svg class="icon icon-eye" aria-hidden="true">
+                                    <use href="../assets/icons.svg#i-eye"></use>
+                                </svg>
+                                <svg class="icon icon-eye-off" aria-hidden="true">
+                                    <use href="../assets/icons.svg#i-eye-off"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="loginMessage" class="form-message" role="alert" aria-live="polite"></div>
+
+                    <button class="btn btn-primary btn-block" type="submit">
+                        <span class="btn-label">Log in</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                </form>
+
+                <div class="demo-box" data-demo-only hidden>
+                    <p class="demo-intro">Choose a demo account to fill in its login details.</p>
+                    <div class="demo-accounts">
+                        <button class="demo-account" type="button" data-demo-email="admin@test.com"
+                            data-demo-password="password123">
+                            <span class="demo-account-copy">
+                                <strong>Admin</strong>
+                                <span>admin@test.com · password123</span>
+                            </span>
+                        </button>
+
+                        <button class="demo-account" type="button" data-demo-email="john@test.com"
+                            data-demo-password="password123">
+                            <span class="demo-account-copy">
+                                <strong>User</strong>
+                                <span>john@test.com · password123</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <p class="auth-switch">New to TaskFlow? <a href="register.html">Create an account</a></p>
+            </div>
+        </section>
+    </main>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/demo.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow — Task management that keeps you moving</title>
+    <meta name="description"
+        content="TaskFlow is a calm, focused workspace for planning tasks, tracking progress and managing your team with role-based access.">
+    <meta name="theme-color" content="#0D9488">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+    <noscript>
+        <style>
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                filter: none !important;
+            }
+
+            .strip-inner > * {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        </style>
+    </noscript>
+</head>
+
+<body class="landing">
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="TaskFlow home">
+                <span class="brand-mark">
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                </span>
+                <span>TaskFlow</span>
+            </a>
+
+            <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it works</a>
+                <a href="#roles">Roles</a>
+            </nav>
+
+            <div class="header-actions">
+                <a class="btn btn-ghost" href="pages/login.html">Log in</a>
+                <a class="btn btn-primary" href="pages/register.html">
+                    Get started
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg>
+                </a>
+                <button class="icon-btn nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"
+                    aria-controls="siteNav">
+                    <svg class="icon icon-menu" aria-hidden="true"><use href="assets/icons.svg#i-menu"></use></svg>
+                    <svg class="icon icon-close" aria-hidden="true"><use href="assets/icons.svg#i-x"></use></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-copy reveal">
+                    <h1>Organize your work.<br><span class="hl">Achieve more.</span></h1>
+
+                    <p class="hero-lede">
+                        TaskFlow brings your tasks, priorities and progress into one clear workspace
+                        — with separate views for you and your administrator.
+                    </p>
+
+                    <div class="hero-cta">
+                        <a class="btn btn-primary btn-lg" href="pages/register.html">
+                            Create free account
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg>
+                        </a>
+                        <a class="btn btn-secondary btn-lg" href="pages/login.html">Log in</a>
+                    </div>
+
+                    <ul class="hero-points">
+                        <li>
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                            Free to use
+                        </li>
+                        <li>
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                            No credit card
+                        </li>
+                        <li>
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                            Runs in your browser
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="hero-preview reveal" style="--delay: 90ms">
+                    <div class="preview-window">
+                        <div class="preview-bar">
+                            <div class="window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                            <span class="preview-url">
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-lock"></use></svg>
+                                taskflow.app/today
+                            </span>
+                        </div>
+
+                        <div class="preview-body">
+                            <div class="preview-head">
+                                <div>
+                                    <p class="preview-kicker" id="previewDate">Today</p>
+                                    <h3>My tasks</h3>
+                                </div>
+                                <div class="preview-ring" id="previewRing" style="--value: 67" aria-hidden="true">
+                                    <span id="previewPercent">67%</span>
+                                </div>
+                            </div>
+
+                            <div class="preview-progress" aria-hidden="true">
+                                <span id="previewBar" style="width: 67%"></span>
+                            </div>
+
+                            <ul class="preview-tasks" id="previewTasks">
+                                <li class="preview-task is-done">
+                                    <button class="preview-check task-check" aria-label="Mark task as pending"
+                                        aria-pressed="true">
+                                        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                                    </button>
+                                    <div class="preview-task-copy">
+                                        <strong>Complete project documentation</strong>
+                                        <span>Documentation · High priority</span>
+                                    </div>
+                                </li>
+
+                                <li class="preview-task is-done">
+                                    <button class="preview-check task-check" aria-label="Mark task as pending"
+                                        aria-pressed="true">
+                                        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                                    </button>
+                                    <div class="preview-task-copy">
+                                        <strong>Prepare internship report</strong>
+                                        <span>Writing · Medium priority</span>
+                                    </div>
+                                </li>
+
+                                <li class="preview-task">
+                                    <button class="preview-check task-check" aria-label="Mark task as complete"
+                                        aria-pressed="false">
+                                        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                                    </button>
+                                    <div class="preview-task-copy">
+                                        <strong>Review project progress</strong>
+                                        <span>Planning · Medium priority</span>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="preview-foot">
+                                <div class="avatar-stack" aria-hidden="true">
+                                    <span class="avatar avatar-xs">JD</span>
+                                    <span class="avatar avatar-xs">MP</span>
+                                    <span class="avatar avatar-xs">AS</span>
+                                </div>
+                                <span id="previewFootText">2 of 3 tasks complete</span>
+                                <span class="trend-up">
+                                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-up-right"></use></svg>
+                                    12%
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities -->
+        <section class="capability-strip" aria-label="Core capabilities">
+            <div class="container strip-inner reveal">
+                <span class="strip-label">Everything included</span>
+                <span class="strip-item">
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-columns"></use></svg>
+                    Kanban board
+                </span>
+                <span class="strip-item">
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-flag"></use></svg>
+                    Priorities
+                </span>
+                <span class="strip-item">
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-calendar"></use></svg>
+                    Due dates
+                </span>
+                <span class="strip-item">
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-chart"></use></svg>
+                    Progress insights
+                </span>
+                <span class="strip-item">
+                    <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-shield"></use></svg>
+                    Role-based access
+                </span>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Features</span>
+                    <h2>Built for focus, not busywork.</h2>
+                    <p>Every view is designed to answer one question: what should I do next?</p>
+                </div>
+
+                <div class="bento">
+                    <article class="bento-card bento-wide reveal">
+                        <div class="bento-copy">
+                            <span class="icon-chip">
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-columns"></use></svg>
+                            </span>
+                            <h3>A board that moves with you</h3>
+                            <p>Drag tasks between Pending, In progress and Completed. Status changes save
+                                instantly, so the board always reflects reality.</p>
+                        </div>
+
+                        <div class="mini-board" aria-hidden="true">
+                            <div class="mini-col">
+                                <span class="mini-col-head">
+                                    <i class="dot" style="color:#D97706"></i> Pending <b>2</b>
+                                </span>
+                                <div class="mini-card">
+                                    <span class="mini-line w-80"></span>
+                                    <span class="mini-line w-60"></span>
+                                    <span class="mini-tag danger">High</span>
+                                </div>
+                                <div class="mini-card">
+                                    <span class="mini-line w-70"></span>
+                                    <span class="mini-line w-50"></span>
+                                </div>
+                            </div>
+
+                            <div class="mini-col">
+                                <span class="mini-col-head">
+                                    <i class="dot" style="color:#0284C7"></i> In progress <b>1</b>
+                                </span>
+                                <div class="mini-card">
+                                    <span class="mini-line w-90"></span>
+                                    <span class="mini-line w-60"></span>
+                                    <span class="mini-tag warn">Medium</span>
+                                </div>
+                            </div>
+
+                            <div class="mini-col">
+                                <span class="mini-col-head">
+                                    <i class="dot" style="color:#16A34A"></i> Done <b>3</b>
+                                </span>
+                                <div class="mini-card">
+                                    <span class="mini-line w-70"></span>
+                                    <span class="mini-line w-50"></span>
+                                    <span class="mini-tag">Low</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bento-card reveal" style="--delay: 60ms">
+                        <span class="icon-chip">
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-target"></use></svg>
+                        </span>
+                        <h3>Progress you can trust</h3>
+                        <p>Counts and completion rates update as tasks move, so you always know where the week
+                            stands.</p>
+                        <div class="bento-stat">
+                            <div class="preview-ring" style="--value: 75" aria-hidden="true">
+                                <span>75%</span>
+                            </div>
+                            <div>
+                                <strong>18 / 24</strong>
+                                <span>Tasks completed this week</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bento-card reveal" style="--delay: 110ms">
+                        <span class="icon-chip">
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-users"></use></svg>
+                        </span>
+                        <h3>Two roles, one source of truth</h3>
+                        <p>Users manage their own tasks. Admins get a read-only view of every account and every
+                            task.</p>
+                        <div class="bento-visual" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                            <span class="pill pill-accent">
+                                <svg class="icon" style="width:12px;height:12px" aria-hidden="true">
+                                    <use href="assets/icons.svg#i-user"></use>
+                                </svg>
+                                User
+                            </span>
+                            <span class="pill pill-info">
+                                <svg class="icon" style="width:12px;height:12px" aria-hidden="true">
+                                    <use href="assets/icons.svg#i-shield"></use>
+                                </svg>
+                                Admin
+                            </span>
+                            <div class="avatar-stack">
+                                <span class="avatar avatar-sm">JD</span>
+                                <span class="avatar avatar-sm">MP</span>
+                                <span class="avatar avatar-sm">AS</span>
+                                <span class="avatar avatar-sm">AU</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bento-card bento-wide reveal" style="--delay: 150ms">
+                        <div class="bento-copy">
+                            <span class="icon-chip">
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-shield"></use></svg>
+                            </span>
+                            <h3>Sessions you can trust</h3>
+                            <p>Every request carries a signed token. Expired sessions return you to login, and
+                                role guards keep admin pages out of reach.</p>
+                        </div>
+                        <div class="mini-board" style="grid-template-columns:1fr;gap:8px">
+                            <div class="mini-card" style="flex-direction:row;align-items:center;gap:9px">
+                                <span class="chip-icon" style="width:26px;height:26px;border-radius:7px">
+                                    <svg class="icon" style="width:13px;height:13px" aria-hidden="true">
+                                        <use href="assets/icons.svg#i-lock"></use>
+                                    </svg>
+                                </span>
+                                <span style="font-size:11px;color:var(--text-soft);font-weight:600">
+                                    Protected API requests
+                                </span>
+                                <span class="pill pill-success" style="margin-left:auto;height:20px;font-size:10px">
+                                    Active
+                                </span>
+                            </div>
+                            <div class="mini-card" style="flex-direction:row;align-items:center;gap:9px">
+                                <span class="chip-icon" style="width:26px;height:26px;border-radius:7px">
+                                    <svg class="icon" style="width:13px;height:13px" aria-hidden="true">
+                                        <use href="assets/icons.svg#i-user"></use>
+                                    </svg>
+                                </span>
+                                <span style="font-size:11px;color:var(--text-soft);font-weight:600">
+                                    Role-aware route guards
+                                </span>
+                                <span class="pill pill-success" style="margin-left:auto;height:20px;font-size:10px">
+                                    Enabled
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="section" id="how-it-works" style="padding-top:0">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">How it works</span>
+                    <h2>From empty board to clear week in three steps.</h2>
+                </div>
+
+                <ol class="steps-grid">
+                    <li class="step-card reveal">
+                        <span class="step-num" aria-hidden="true">01</span>
+                        <span class="icon-chip">
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-user-plus"></use></svg>
+                        </span>
+                        <h3>Create your account</h3>
+                        <p>Register in seconds. Your session is protected and your role is assigned automatically.</p>
+                    </li>
+
+                    <li class="step-card reveal" style="--delay: 70ms">
+                        <span class="step-num" aria-hidden="true">02</span>
+                        <span class="icon-chip">
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-plus"></use></svg>
+                        </span>
+                        <h3>Add your tasks</h3>
+                        <p>Set a title, priority and due date. Everything lands on a board you can actually use.</p>
+                    </li>
+
+                    <li class="step-card reveal" style="--delay: 140ms">
+                        <span class="step-num" aria-hidden="true">03</span>
+                        <span class="icon-chip">
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-chart"></use></svg>
+                        </span>
+                        <h3>Track and finish</h3>
+                        <p>Drag cards as work progresses and watch completion rates update in real time.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Roles -->
+        <section class="section" id="roles" style="padding-top:0">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="eyebrow">Roles</span>
+                    <h2>The right view for every person.</h2>
+                    <p>One workspace, two clear scopes. No shared passwords and no accidental edits.</p>
+                </div>
+
+                <div class="roles-grid">
+                    <article class="role-card reveal">
+                        <div class="role-head">
+                            <span class="icon-chip">
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-user"></use></svg>
+                            </span>
+                            <span class="pill pill-accent">User</span>
+                        </div>
+                        <h3>Your personal workspace</h3>
+                        <p>Everything you need to plan a day and finish it.</p>
+                        <ul class="check-list">
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check-circle"></use></svg>
+                                Create, edit and delete your own tasks
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check-circle"></use></svg>
+                                Move cards across the Kanban board
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check-circle"></use></svg>
+                                Search, filter and track completion
+                            </li>
+                        </ul>
+                        <a class="link-arrow" href="pages/register.html">
+                            Start as a user
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg>
+                        </a>
+                    </article>
+
+                    <article class="role-card role-card-dark reveal" style="--delay: 80ms">
+                        <div class="role-head">
+                            <span class="icon-chip icon-chip-light">
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-shield"></use></svg>
+                            </span>
+                            <span class="pill pill-light">Admin</span>
+                        </div>
+                        <h3>Full visibility, read-only control</h3>
+                        <p>See the whole workspace without touching anyone's work.</p>
+                        <ul class="check-list">
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check-circle"></use></svg>
+                                Review every registered user
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check-circle"></use></svg>
+                                Inspect tasks across all accounts
+                            </li>
+                            <li>
+                                <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check-circle"></use></svg>
+                                Filter, search and export task reports
+                            </li>
+                        </ul>
+                        <a class="link-arrow link-arrow-light" href="pages/login.html">
+                            Sign in as admin
+                            <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-arrow-right"></use></svg>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card reveal">
+                    <div class="cta-copy">
+                        <span class="eyebrow eyebrow-light">
+                            <span class="eyebrow-dot"></span>
+                            Get started
+                        </span>
+                        <h2>Your clearest week starts here.</h2>
+                        <p>Set up your workspace in under a minute. No setup fees, no clutter, no noise.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a class="btn btn-light btn-lg" href="pages/register.html">Create account</a>
+                        <a class="btn btn-outline-light btn-lg" href="pages/login.html">Log in</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="index.html">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#i-check"></use></svg>
+                    </span>
+                    <span>TaskFlow</span>
+                </a>
+                <p>Organize your tasks, manage your time and keep progress visible — all in one place.</p>
+                <!-- <span class="footer-status"><span class="dot"></span>Demo workspace ready</span> -->
+            </div>
+
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#roles">Roles</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Account</h4>
+                <ul>
+                    <li><a href="pages/login.html">Log in</a></li>
+                    <li><a href="pages/register.html">Create account</a></li>
+                    <li><a href="pages/login.html">Admin access</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Workspace</h4>
+                <ul>
+                    <li><span>User dashboard</span></li>
+                    <li><span>Admin dashboard</span></li>
+                    <li><span>Local demo data</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© <span id="year">2026</span> TaskFlow. All rights reserved.</p>
+            <p>Built with HTML, CSS and JavaScript.</p>
+        </div>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/landing.js"></script>
+</body>
+
+</html>

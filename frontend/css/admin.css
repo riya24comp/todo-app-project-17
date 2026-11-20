@@ -1,0 +1,235 @@
+/* =====================================
+   TASKFLOW — ADMIN
+===================================== */
+
+.admin-panel .panel-head {
+    align-items: flex-start;
+}
+
+.admin-panel .panel-head h2 {
+    font-size: 16px;
+}
+
+.admin-panel .panel-head p {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.admin-panel .form-message {
+    padding: 0 18px;
+}
+
+.admin-panel .form-message:not(:empty) {
+    padding-top: 12px;
+}
+
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    border: 1px solid var(--accent-line);
+    border-radius: var(--r-pill);
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.data-table .cell-task strong {
+    display: block;
+    max-width: 34ch;
+    overflow: hidden;
+    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.data-table .cell-task span {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 11.5px;
+}
+
+.role-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 8px;
+    border-radius: var(--r-pill);
+    background: var(--surface-3);
+    color: var(--text-soft);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.role-pill.is-admin {
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+}
+
+.role-pill .icon {
+    width: 12px;
+    height: 12px;
+}
+
+.owner-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.owner-cell .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+}
+
+.owner-cell span {
+    overflow: hidden;
+    max-width: 16ch;
+    color: var(--text-soft);
+    font-size: 12.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.empty-cell {
+    padding: 34px 16px !important;
+    color: var(--muted) !important;
+    text-align: center;
+}
+
+/* Skeleton rows */
+.skeleton-row td {
+    padding: 15px 16px;
+}
+
+.skeleton-bar {
+    height: 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+    .admin-panel .panel-head {
+        flex-direction: column;
+    }
+
+    .admin-toolbar {
+        width: 100%;
+    }
+
+    .admin-toolbar .search-field {
+        flex: 1;
+        min-width: 160px;
+    }
+
+    .admin-toolbar .search-field input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 760px) {
+
+    .data-table,
+    .data-table tbody,
+    .data-table tr,
+    .data-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .data-table thead {
+        display: none;
+    }
+
+    .data-table tbody {
+        padding: 6px 12px 12px;
+    }
+
+    .data-table tbody tr {
+        margin-top: 10px;
+        padding: 6px 12px;
+        border: 1px solid var(--line);
+        border-radius: var(--r-md);
+        background: var(--surface);
+        box-shadow: var(--shadow-xs);
+    }
+
+    .data-table tbody tr:hover {
+        background: var(--surface);
+    }
+
+    .data-table td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 8px 0;
+        border-bottom: 1px dashed var(--line);
+        text-align: right;
+    }
+
+    .data-table td:last-child {
+        border-bottom: 0;
+    }
+
+    .data-table td::before {
+        content: attr(data-label);
+        flex: 0 0 auto;
+        color: var(--muted);
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    .data-table td.cell-task,
+    .data-table td.cell-owner,
+    .data-table td.cell-user {
+        justify-content: flex-end;
+    }
+
+    .data-table td.cell-task strong,
+    .data-table td.cell-task span {
+        text-align: right;
+    }
+
+    .table-user {
+        justify-content: flex-end;
+    }
+
+    .owner-cell {
+        justify-content: flex-end;
+    }
+
+    .table-foot {
+        display: none;
+    }
+
+    .empty-cell {
+        display: block !important;
+    }
+
+    .empty-cell::before {
+        content: none !important;
+    }
+}
+
+/* Show role labels as plain text. */
+.role-pill, .role-pill.is-admin, .admin-badge {
+    display: none !important;
+}
+.role-pill .icon {
+    display: none;
+}
+

@@ -1,0 +1,71 @@
+/* =====================================
+   TASKFLOW — DESIGN TOKENS
+===================================== */
+
+:root {
+    /* Typography */
+    --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-display: "Sora", "Inter", system-ui, sans-serif;
+
+    /* Neutrals */
+    --ink: #0B1220;
+    --ink-soft: #1E293B;
+    --text: #0F172A;
+    --text-soft: #475569;
+    --muted: #64748B;
+    --muted-2: #94A3B8;
+    --line: #E3E8EF;
+    --line-strong: #CBD5E1;
+    --bg: #F6F8FA;
+    --bg-2: #F1F5F9;
+    --surface: #FFFFFF;
+    --surface-2: #F8FAFC;
+    --surface-3: #F1F5F9;
+
+    /* Accent — teal */
+    --accent: #0D9488;
+    --accent-strong: #0F766E;
+    --accent-ink: #134E4A;
+    --accent-soft: #E7FBF7;
+    --accent-soft-2: #CCFBF1;
+    --accent-line: #99F6E4;
+
+    /* Feedback */
+    --success: #15803D;
+    --success-soft: #E9F9EF;
+    --warning: #B45309;
+    --warning-soft: #FEF4E2;
+    --danger: #B91C1C;
+    --danger-soft: #FDEDED;
+    --info: #0369A1;
+    --info-soft: #E8F4FB;
+
+    /* Radii */
+    --r-xs: 6px;
+    --r-sm: 8px;
+    --r-md: 12px;
+    --r-lg: 16px;
+    --r-xl: 20px;
+    --r-2xl: 28px;
+    --r-pill: 999px;
+
+    /* Elevation */
+    --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.07), 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 14px 30px -18px rgba(15, 23, 42, 0.28);
+    --shadow-lg: 0 32px 70px -32px rgba(15, 23, 42, 0.35);
+    --shadow-accent: 0 12px 26px -14px rgba(13, 148, 136, 0.55);
+
+    /* Layout */
+    --container: 1180px;
+    --sidebar-w: 264px;
+    --topbar-h: 68px;
+
+    /* Motion */
+    --ease: cubic-bezier(0.22, 0.7, 0.28, 1);
+    --speed: 180ms;
+    --speed-slow: 320ms;
+
+    /* Focus */
+    --ring: 0 0 0 3px rgba(13, 148, 136, 0.22);
+}

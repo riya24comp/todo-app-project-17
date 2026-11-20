@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview | TaskFlow</title>
+    <meta name="theme-color" content="#0D9488">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body class="app-page" data-page="user-dashboard">
+
+    <a class="skip-link" href="#taskBoard">Skip to tasks</a>
+
+    <div class="app-shell">
+
+        <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+        <aside class="sidebar" id="sidebar" aria-label="Workspace navigation">
+            <div class="sidebar-head">
+                <a class="brand" href="user-dashboard.html" aria-label="TaskFlow dashboard">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check"></use></svg>
+                    </span>
+                    <span>TaskFlow</span>
+                </a>
+                <button class="icon-btn sidebar-close" id="sidebarClose" aria-label="Close menu">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-x"></use></svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <p class="nav-label">Workspace</p>
+
+                <button class="nav-item side-filter is-active" data-filter="all">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-layout"></use></svg>
+                    Overview
+                    <span class="nav-count" data-count="all">0</span>
+                </button>
+
+                <button class="nav-item side-filter" data-filter="pending">
+                    <span class="status-dot dot-pending"></span>
+                    Pending
+                    <span class="nav-count" data-count="pending">0</span>
+                </button>
+
+                <button class="nav-item side-filter" data-filter="in-progress">
+                    <span class="status-dot dot-progress"></span>
+                    In progress
+                    <span class="nav-count" data-count="in-progress">0</span>
+                </button>
+
+                <button class="nav-item side-filter" data-filter="completed">
+                    <span class="status-dot dot-completed"></span>
+                    Completed
+                    <span class="nav-count" data-count="completed">0</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-spacer"></div>
+
+            <div class="sidebar-progress">
+                <div class="sidebar-progress-head">
+                    <span>Completion</span>
+                    <strong id="sidebarProgressText">0%</strong>
+                </div>
+                <div class="progress-track"><span id="sidebarProgressBar" style="width: 0%"></span></div>
+                <p><span id="completedCount">0</span> of <span id="totalCount">0</span> tasks completed</p>
+            </div>
+
+            <div class="sidebar-user">
+                <span class="avatar" id="userInitials">U</span>
+                <div class="sidebar-user-copy">
+                    <strong id="userNameSidebar">User</strong>
+                    <span id="userEmailSidebar">you@example.com</span>
+                </div>
+                <button class="icon-btn" data-logout aria-label="Log out">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-log-out"></use></svg>
+                </button>
+            </div>
+        </aside>
+
+        <div class="app-main">
+
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Open menu"
+                        aria-controls="sidebar" aria-expanded="false">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-menu"></use></svg>
+                    </button>
+
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <span>Workspace</span>
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-chevron-right"></use></svg>
+                        <strong id="breadcrumbCurrent">Overview</strong>
+                    </nav>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="search-field">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-search"></use></svg>
+                        <input type="search" id="taskSearch" placeholder="Search tasks" aria-label="Search tasks">
+                    </div>
+
+                    <button class="btn btn-primary" id="openTaskDrawer">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-plus"></use></svg>
+                        <span>New task</span>
+                    </button>
+                </div>
+            </header>
+
+            <main class="content">
+                <header class="page-head">
+                    <div>
+                        <p class="page-eyebrow" id="greeting">Good morning</p>
+                        <h1>Welcome back, <span id="userName">User</span></h1>
+                        <p class="page-sub">Here is what is happening with your tasks today.</p>
+                    </div>
+
+                    <div class="date-chip">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-calendar"></use></svg>
+                        <span id="todayLabel">Today</span>
+                    </div>
+                </header>
+
+                <section class="stats-grid" aria-label="Task statistics">
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-accent">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-layers"></use></svg>
+                        </span>
+                        <div>
+                            <p>Total tasks</p>
+                            <strong id="totalTasks">0</strong>
+                        </div>
+                        <span class="stat-note">All time</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-warning">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-clock"></use></svg>
+                        </span>
+                        <div>
+                            <p>Pending</p>
+                            <strong id="pendingTasks">0</strong>
+                        </div>
+                        <span class="stat-note">To start</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-info">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-play"></use></svg>
+                        </span>
+                        <div>
+                            <p>In progress</p>
+                            <strong id="inProgressTasks">0</strong>
+                        </div>
+                        <span class="stat-note">Active</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-success">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check-circle"></use></svg>
+                        </span>
+                        <div>
+                            <p>Completed</p>
+                            <strong id="completedTasks">0</strong>
+                        </div>
+                        <span class="stat-note">Finished</span>
+                    </article>
+                </section>
+
+                <section class="panel" id="tasksPanel" aria-labelledby="tasksTitle">
+                    <div class="panel-head">
+                        <div class="panel-title">
+                            <h2 id="tasksTitle">Task board</h2>
+                            <p>Drag a card to update its status, or use the task menu.</p>
+                        </div>
+
+                        <div class="board-tools">
+                            <div class="segmented" role="group" aria-label="Filter tasks by status">
+                                <button class="filter-btn is-active" data-filter="all" aria-pressed="true">
+                                    All <span class="seg-count" data-count="all">0</span>
+                                </button>
+                                <button class="filter-btn" data-filter="pending" aria-pressed="false">
+                                    Pending <span class="seg-count" data-count="pending">0</span>
+                                </button>
+                                <button class="filter-btn" data-filter="in-progress" aria-pressed="false">
+                                    In progress <span class="seg-count" data-count="in-progress">0</span>
+                                </button>
+                                <button class="filter-btn" data-filter="completed" aria-pressed="false">
+                                    Completed <span class="seg-count" data-count="completed">0</span>
+                                </button>
+                            </div>
+
+                            <div class="view-switch" role="group" aria-label="Change task view">
+                                <button class="view-btn is-active" data-view="board" aria-pressed="true"
+                                    aria-label="Board view">
+                                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-columns"></use></svg>
+                                </button>
+                                <button class="view-btn" data-view="list" aria-pressed="false" aria-label="List view">
+                                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-list"></use></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="taskList" class="board" data-view="board">
+                        <p class="empty-message">Loading your tasks...</p>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="app-footer">
+                © <span id="year">2026</span> TaskFlow. All rights reserved.
+            </footer>
+        </div>
+    </div>
+
+    <!-- Task drawer -->
+    <dialog class="drawer" id="taskDrawer" aria-labelledby="taskDrawerTitle">
+        <form id="taskForm" class="drawer-form task-form" novalidate>
+            <header class="drawer-head">
+                <div>
+                    <p class="drawer-kicker" id="taskDrawerKicker">New task</p>
+                    <h2 id="taskDrawerTitle">Create a task</h2>
+                </div>
+                <button type="button" class="icon-btn" id="closeTaskDrawer" aria-label="Close">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-x"></use></svg>
+                </button>
+            </header>
+
+            <div class="drawer-body">
+                <input type="hidden" id="taskId">
+
+                <div class="field">
+                    <label for="taskTitle">Task title</label>
+                    <input type="text" id="taskTitle" placeholder="What needs to be done?" required>
+                </div>
+
+                <div class="field">
+                    <label for="taskDescription">Description <span class="optional">Optional</span></label>
+                    <textarea id="taskDescription" rows="4" placeholder="Add a little context..."></textarea>
+                </div>
+
+                <div class="field-row-2">
+                    <div class="field">
+                        <label for="taskPriority">Priority</label>
+                        <select id="taskPriority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+
+                    <div class="field" id="statusField" hidden>
+                        <label for="taskStatus">Status</label>
+                        <select id="taskStatus">
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="taskDueDate">Due date <span class="optional">Optional</span></label>
+                    <input type="date" id="taskDueDate">
+                </div>
+
+                <div id="taskFormMessage" class="form-message" role="alert" aria-live="polite"></div>
+
+                <div class="drawer-tip">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-move"></use></svg>
+                    <p>Tip: on the board you can drag a card into another column to change its status.</p>
+                </div>
+            </div>
+
+            <footer class="drawer-foot">
+                <button type="button" class="btn btn-secondary" id="cancelTask">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="saveTask">
+                    <span class="btn-label">Create task</span>
+                    <span class="spinner" aria-hidden="true"></span>
+                </button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- Confirm dialog -->
+    <dialog class="confirm-dialog" id="confirmDialog" aria-labelledby="confirmTitle">
+        <div class="confirm-icon">
+            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-alert-circle"></use></svg>
+        </div>
+        <h2 id="confirmTitle">Delete this task?</h2>
+        <p id="confirmText">This action cannot be undone.</p>
+        <div class="confirm-actions">
+            <button class="btn btn-secondary" id="confirmCancel">Cancel</button>
+            <button class="btn btn-danger" id="confirmAccept">Delete task</button>
+        </div>
+    </dialog>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/demo.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/router.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+
+</html>
