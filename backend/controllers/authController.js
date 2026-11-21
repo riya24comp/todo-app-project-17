@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../../database/models/User');
+const User = require('../models/User');
 
 /**
  * Generate a signed JWT

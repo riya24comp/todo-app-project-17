@@ -1,5 +1,5 @@
-const User = require('../../database/models/User');
-const Task = require('../../database/models/Task');
+const User = require('../models/User');
+const Task = require('../models/Task');
 
 /**
  * @desc    Get all registered users (Admin only)

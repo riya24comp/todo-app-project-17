@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Task = require('../../database/models/Task');
+const Task = require('../models/Task');
 
 const ALLOWED_STATUSES = ['pending', 'in-progress', 'completed'];
 const ALLOWED_PRIORITIES = ['low', 'medium', 'high'];
