@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration | TaskFlow</title>
+    <meta name="theme-color" content="#0D9488">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body class="app-page" data-page="admin-dashboard">
+
+    <a class="skip-link" href="#usersPanel">Skip to content</a>
+
+    <div class="app-shell">
+
+        <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+        <aside class="sidebar" id="sidebar" aria-label="Admin navigation">
+            <div class="sidebar-head">
+                <a class="brand" href="admin-dashboard.html" aria-label="TaskFlow admin dashboard">
+                    <span class="brand-mark">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check"></use></svg>
+                    </span>
+                    <span>TaskFlow</span>
+                </a>
+                <button class="icon-btn sidebar-close" id="sidebarClose" aria-label="Close menu">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-x"></use></svg>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <p class="nav-label">Administration</p>
+
+                <button class="nav-item is-active" data-tab="users" aria-selected="true">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-users"></use></svg>
+                    Users
+                    <span class="nav-count" id="sideUserCount">0</span>
+                </button>
+
+                <button class="nav-item" data-tab="tasks" aria-selected="false">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-columns"></use></svg>
+                    All tasks
+                    <span class="nav-count" id="sideTaskCount">0</span>
+                </button>
+
+                <p class="nav-label">Site</p>
+
+                <a class="nav-item" href="../index.html">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-arrow-up-right"></use></svg>
+                    View website
+                </a>
+            </nav>
+
+            <div class="sidebar-spacer"></div>
+
+            <div class="sidebar-progress">
+                <div class="sidebar-progress-head">
+                    <span>Completion</span>
+                    <strong id="adminRingText">0%</strong>
+                </div>
+                <div class="progress-track"><span id="adminCompletionBar" style="width: 0%"></span></div>
+                <p id="adminCompletion">0 of 0 tasks completed</p>
+            </div>
+
+            <div class="sidebar-user">
+                <span class="avatar" id="userInitials">A</span>
+                <div class="sidebar-user-copy">
+                    <strong id="userNameSidebar">Admin</strong>
+                    <span id="userEmailSidebar">admin@test.com</span>
+                </div>
+                <button class="icon-btn" data-logout aria-label="Log out">
+                    <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-log-out"></use></svg>
+                </button>
+            </div>
+        </aside>
+
+        <div class="app-main">
+
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Open menu"
+                        aria-controls="sidebar" aria-expanded="false">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-menu"></use></svg>
+                    </button>
+
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <span>Administration</span>
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-chevron-right"></use></svg>
+                        <strong id="breadcrumbCurrent">Users</strong>
+                    </nav>
+                </div>
+
+                <div class="topbar-right">
+                    <span class="pill pill-accent" id="dataModeChip">
+                        <span class="dot"></span>
+                        <span class="data-mode-label">Demo data</span>
+                    </span>
+                </div>
+            </header>
+
+            <main class="content">
+                <header class="page-head">
+                    <div>
+                        <p class="page-eyebrow" id="greeting">Administration</p>
+                        <h1>Platform overview</h1>
+                        <p class="page-sub">Monitor every account and task in the workspace. Admin access is read-only.</p>
+                    </div>
+
+                    <div class="date-chip">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-calendar"></use></svg>
+                        <span id="todayLabel">Today</span>
+                    </div>
+                </header>
+
+                <section class="stats-grid" aria-label="Workspace statistics">
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-accent">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-users"></use></svg>
+                        </span>
+                        <div>
+                            <p>Total users</p>
+                            <strong id="adminTotalUsers">0</strong>
+                        </div>
+                        <span class="stat-note">Accounts</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-info">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-layers"></use></svg>
+                        </span>
+                        <div>
+                            <p>Total tasks</p>
+                            <strong id="adminTotalTasks">0</strong>
+                        </div>
+                        <span class="stat-note">All users</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-warning">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-clock"></use></svg>
+                        </span>
+                        <div>
+                            <p>Pending</p>
+                            <strong id="adminPendingTasks">0</strong>
+                        </div>
+                        <span class="stat-note">Open work</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-icon stat-icon-success">
+                            <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-check-circle"></use></svg>
+                        </span>
+                        <div>
+                            <p>Completed</p>
+                            <strong id="adminCompletedTasks">0</strong>
+                        </div>
+                        <span class="stat-note">Finished</span>
+                    </article>
+                </section>
+
+                <section class="insight-grid" aria-label="Workspace insights">
+                    <article class="insight-card">
+                        <h3>Completion rate</h3>
+                        <p>Across every task in the workspace.</p>
+                        <div class="insight-ring-row">
+                            <div class="ring ring-lg" id="adminRing" style="--value: 0" aria-hidden="true">
+                                <span id="adminRingValue">0%</span>
+                            </div>
+                            <div>
+                                <strong id="adminRingTextInline">0%</strong>
+                                <span id="adminCompletionNote">No tasks yet</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="insight-card">
+                        <h3>Status distribution</h3>
+                        <p>How work is spread across the three board columns.</p>
+                        <div class="chart-rows">
+                            <div class="chart-row">
+                                <span>Pending</span>
+                                <div class="chart-bar bar-warning"><span id="chartPendingBar" style="width: 0%"></span></div>
+                                <b id="chartPendingCount">0</b>
+                            </div>
+                            <div class="chart-row">
+                                <span>In progress</span>
+                                <div class="chart-bar bar-info"><span id="chartProgressBar" style="width: 0%"></span></div>
+                                <b id="chartProgressCount">0</b>
+                            </div>
+                            <div class="chart-row">
+                                <span>Completed</span>
+                                <div class="chart-bar bar-success"><span id="chartCompletedBar" style="width: 0%"></span></div>
+                                <b id="chartCompletedCount">0</b>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <div class="tab-bar" role="tablist" aria-label="Administration sections">
+                    <button class="tab-btn is-active" data-tab="users" role="tab" aria-selected="true">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-users"></use></svg>
+                        Users
+                    </button>
+                    <button class="tab-btn" data-tab="tasks" role="tab" aria-selected="false">
+                        <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-columns"></use></svg>
+                        All tasks
+                    </button>
+                </div>
+
+                <!-- Users -->
+                <section class="panel admin-panel" id="usersPanel" role="tabpanel" aria-labelledby="usersTab">
+                    <div class="panel-head">
+                        <div>
+                            <h2>Registered users</h2>
+                            <p>Everyone with access to this workspace.</p>
+                        </div>
+
+                        <div class="admin-toolbar">
+                            <div class="search-field">
+                                <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-search"></use></svg>
+                                <input type="search" id="userSearch" placeholder="Search users"
+                                    aria-label="Search users">
+                            </div>
+                            <button class="btn btn-secondary btn-sm" id="refreshUsersBtn">
+                                <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-refresh"></use></svg>
+                                <span class="btn-label">Refresh</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="usersMessage" class="form-message" role="status" aria-live="polite"></div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">User</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Tasks</th>
+                                    <th scope="col">Joined</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <tr class="skeleton-row">
+                                    <td><div class="skeleton skeleton-bar" style="width: 160px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 64px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 30px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 82px"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span id="usersSummary">Loading users...</span>
+                        <span>Admin access is read-only</span>
+                    </div>
+                </section>
+
+                <!-- Tasks -->
+                <section class="panel admin-panel" id="tasksPanel" role="tabpanel" aria-labelledby="tasksTab" hidden>
+                    <div class="panel-head">
+                        <div>
+                            <h2>All tasks</h2>
+                            <p>Tasks created by every registered user.</p>
+                        </div>
+
+                        <div class="admin-toolbar">
+                            <select class="toolbar-select" id="adminStatusFilter" aria-label="Filter tasks by status">
+                                <option value="all">All statuses</option>
+                                <option value="pending">Pending</option>
+                                <option value="in-progress">In progress</option>
+                                <option value="completed">Completed</option>
+                            </select>
+
+                            <div class="search-field">
+                                <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-search"></use></svg>
+                                <input type="search" id="taskSearchAdmin" placeholder="Search tasks"
+                                    aria-label="Search tasks">
+                            </div>
+
+                            <button class="btn btn-secondary btn-sm" id="exportTasksBtn">
+                                <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-download"></use></svg>
+                                <span class="btn-label">Export CSV</span>
+                            </button>
+
+                            <button class="btn btn-secondary btn-sm" id="refreshTasksBtn">
+                                <svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#i-refresh"></use></svg>
+                                <span class="btn-label">Refresh</span>
+                                <span class="spinner" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="adminTasksMessage" class="form-message" role="status" aria-live="polite"></div>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Task</th>
+                                    <th scope="col">Owner</th>
+                                    <th scope="col">Priority</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Due date</th>
+                                    <th scope="col">Created</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTasksTableBody">
+                                <tr class="skeleton-row">
+                                    <td><div class="skeleton skeleton-bar" style="width: 190px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 110px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 56px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 70px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 64px"></div></td>
+                                    <td><div class="skeleton skeleton-bar" style="width: 72px"></div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-foot">
+                        <span id="tasksSummary">Loading tasks...</span>
+                        <span>Exports respect the active filters</span>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="app-footer">
+                © <span id="year">2026</span> TaskFlow. All rights reserved.
+            </footer>
+        </div>
+    </div>
+
+    <div id="toastRegion" class="toast-region" aria-live="polite"></div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/demo.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/router.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+
+</html>
